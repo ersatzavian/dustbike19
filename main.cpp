@@ -5,9 +5,9 @@
 
 #include "mbed.h"
 
-#define SLEEP_TIME                  1 // (msec)
+#define SLEEP_TIME                  10 // (msec)
 #define APA102_COUNT                60
-#define APA102_LEVEL                1 // brightness 0-31
+#define APA102_LEVEL                2 // brightness 0-31
 #define SPI_RATE_HZ                 500000                   
 
 /* Pin assignments:
@@ -31,16 +31,16 @@
 SPI spi(PB_5, PB_4, PB_3);
 
 // Not HTML hex; APA102 uses [B,G,R]
-int color_buffer[] = {0xeb40a0,0xeb40a0,0xeb40a0,0xeb40a0,0xeb40a0,0xeb6490,
-                      0xeb6490,0xeb6490,0xeb6490,0xeb403d,0xeb403d,0xeb403d,
-                      0xeb403d,0xeb403d,0xeb403d,0xeb403d,0xeb403d,0xeb403d,
-                      0xeb5034,0xeb5034,0xeb5034,0xeb8434,0xeb8434,0xeb8434,
-                      0xeba034,0xeba034,0xeba034,0xebc334,0xebc334,0xebc334,
-                      0xeb40a0,0xeb40a0,0xeb40a0,0xeb40a0,0xeb40a0,0xeb6490,
-                      0xeb6490,0xeb6490,0xeb6490,0xeb403d,0xeb403d,0xeb403d,
-                      0xeb403d,0xeb403d,0xeb403d,0xeb403d,0xeb403d,0xeb403d,
-                      0xeb5034,0xeb5034,0xeb5034,0xeb8434,0xeb8434,0xeb8434,
-                      0xeba034,0xeba034,0xeba034,0xebc334,0xebc334,0xebc334
+int color_buffer[] = {0x2a034d,0x27054f,0x250851,0x220b53,0x200e55,0x1d1157,
+                      0x1b1459,0x18175b,0x16195d,0x131c5f,0x111f61,0x0e2263,
+                      0x0c2565,0x092867,0x072b69,0x082b69,0x092867,0x0c2565,
+                      0x0e2263,0x111f61,0x131c5f,0x16195d,0x18175b,0x1b1459,
+                      0x1d1157,0x200e55,0x220b53,0x250851,0x27054f,0x2a034d,
+                      0x2a034d,0x27054f,0x250851,0x220b53,0x200e55,0x1d1157,
+                      0x1b1459,0x18175b,0x16195d,0x131c5f,0x111f61,0x0e2263,
+                      0x0c2565,0x092867,0x072b69,0x082b69,0x092867,0x0c2565,
+                      0x0e2263,0x111f61,0x131c5f,0x16195d,0x18175b,0x1b1459,
+                      0x1d1157,0x200e55,0x220b53,0x250851,0x27054f,0x2a034d                    
                     };
 
 void apa102_draw(void) {
@@ -53,9 +53,9 @@ void apa102_draw(void) {
     // LED buffer
     for (i = 0; i < APA102_COUNT; i++) {
         spi.write((7<<5) | APA102_LEVEL);
-        spi.write((color_buffer[i] >> 16) & 0xff); // B
+        spi.write(color_buffer[i] & 0xff); // B
         spi.write((color_buffer[i] >> 8) & 0xff); // G
-        spi.write((color_buffer[i]) & 0xff); // R
+        spi.write((color_buffer[i] >> 16) & 0xff); // R
     }
     // end of frame
     for (i = 0; i < 4; i++) {
