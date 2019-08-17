@@ -46,7 +46,7 @@ Serial pc(USBTX, USBRX);
 #endif 
 
 SPI spi(DATA_PIN, MISO_UNUSED_PIN, CLK_PIN);
-PwmOut taillight(TAILLIGHT_EN_PIN);
+DigitalOut taillight(TAILLIGHT_EN_PIN);
 // NFET Switches 2-4 have high threshold voltages and have external pullups
 // Use DigitalInOut instead of DigitalOut so we can configure Open Drain
 DigitalInOut flood_l(FLOOD_L_EN_PIN);
@@ -79,7 +79,6 @@ int count_100ms = 0;
 float speed_mps = 0;
 
 bool colors_active = false;
-bool taillight_active = false;
 bool floods_active = false;
 bool wig_wag_active = false;
 bool patrol_mode = true;
@@ -132,7 +131,7 @@ void apa102_draw() {
 void color_clear() {
     int i; 
 
-        // start of frame
+    // start of frame
     for (i = 0; i < 4; i++) {
         spi.write(0);
     }
@@ -150,10 +149,10 @@ void color_clear() {
 }
 
 void color_advance() {
-    int temp = color_buffer[APA102_COUNT - 1];
-    for (int x = (APA102_COUNT - 1); x > 0; x--) {
-        color_buffer[x] = color_buffer[x - 1];
-        color_buffer[0] = temp;
+    int temp = color_buffer[0];
+    for (int x = 0; x < (APA102_COUNT - 1); x++) {
+        color_buffer[x] = color_buffer[x + 1];
+        color_buffer[APA102_COUNT - 1] = temp;
     }
 
     // write out the current buffer
@@ -162,13 +161,6 @@ void color_advance() {
 
 void service_ctrl_panel() {
     bool start_wig_wag = false;
-
-    // taillight brightness proportional to speed, saturate at ~15 mph.
-    if (taillight_active) {
-        taillight.write(speed_mps / FULL_SPEED_MPS);
-    } else {
-        taillight.write(0);
-    }
 
     // service control panel
     // 1: Charge Enable
@@ -201,9 +193,9 @@ void service_ctrl_panel() {
     }
     // 5: Taillight
     if (!ctrl5.read()) {  
-        taillight_active = true;
+        taillight.write(1);
     } else {
-        taillight_active = false;
+        taillight.write(0);
     }
     // 6: Patrol mode
     if (!ctrl6.read()) {
@@ -277,14 +269,16 @@ int main()
     flood_l.write(0);
     flood_r.write(0);
     meter_en.write(0);
+    taillight.write(0);
 
     spi.frequency(SPI_RATE_HZ);
 
-    taillight.period(1.0/PWM_RATE_HZ);
-    taillight.write(0);
-
-    // start with color LEDs off 
-    color_clear();
+    // initialize the lights to on or off
+    if (colors_active) {
+        apa102_draw();
+    } else {
+        color_clear();
+    }
 
     // start the speed counter timer
     t.start();
