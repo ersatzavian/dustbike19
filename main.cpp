@@ -5,35 +5,45 @@
 
 #include "mbed.h"
 
+//#define DEBUG
+
 #define UPDATE_PERIOD_MS            100 // (msec)
 #define APA102_COUNT                60
-#define APA102_LEVEL                4 // brightness 0-31
+#define APA102_LEVEL                31 // brightness 0-31
 #define SPI_RATE_HZ                 500000  
 #define PWM_RATE_HZ                 500
-#define WHEEL_CIRC_MM               2170 // wheel circumference in millimeters.
-#define NUM_WHEEL_MAGNETS           4.0 // number of evenly-spaced speed sensor magnets
+#define WHEEL_CIRC_MM               2170.0 // wheel circumference in millimeters.
+#define NUM_WHEEL_MAGNETS           2 // number of evenly-spaced speed sensor magnets
 #define PIXELS_PER_METER            60.0
 #define FULL_SPEED_MPS              6.7 // about 15 mph; set the taillight on full at this speed.
-#define TEST_TIME_SINCE_WHEELTICK_MS     2000 // 100 ms/tick * 4 ticks/rev * 1 rev/2.17m = 0.184 s/m = 5.4 m/s = 12mph
+#define MAX_SPEED_MPS               18.0 // about 40 mph; used to debounce the mag switch
+#define TEST_TIME_SINCE_WHEELTICK_US     2000000 // 100 ms/tick * 4 ticks/rev * 1 rev/2.17m = 0.184 s/m = 5.4 m/s = 12mph
 #define WIG_WAG_RATE_S              1.0
+#define MIN_TIME_BETWEEN_TICKS_US  (WHEEL_CIRC_MM * 1000)/ (NUM_WHEEL_MAGNETS * MAX_SPEED_MPS)
 
 /* Pin assignments */ 
-#define CLK_PIN                 PB_3
-#define DATA_PIN                PB_5
-#define MISO_UNUSED_PIN         PB_4
-#define TAILLIGHT_EN_PIN        PA_8
-#define FLOOD_L_EN_PIN          PA_9
-#define FLOOD_R_EN_PIN          PA_10
-#define CHG_EN_PIN              PB_1
-#define SPEED_IN_PIN            PA_0
-#define METER_EN_PIN            PB_0
-#define CTRL_1_PIN              PA_1
-#define CTRL_2_PIN              PA_3
-#define CTRL_3_PIN              PA_4
-#define CTRL_4_PIN              PA_5
-#define CTRL_5_PIN              PA_6
-#define CTRL_6_PIN              PA_7
-#define CTRL_7_PIN              PA_2
+#define CLK_PIN                 PB_3  // D13
+#define DATA_PIN                PB_5  // D11
+#define MISO_UNUSED_PIN         PB_4  // D12
+#define TAILLIGHT_EN_PIN        PA_8  // D9
+#define FLOOD_L_EN_PIN          PA_9  // D1
+#define FLOOD_R_EN_PIN          PA_10 // D0
+#define CHG_EN_PIN              PB_1  // D6
+#define SPEED_IN_PIN            PA_0  // A0
+#define METER_EN_PIN            PB_0  // D3
+#define CTRL_1_PIN              PA_1  // A1
+#define CTRL_2_PIN              PA_3  // A2
+#define CTRL_3_PIN              PA_4  // A3
+#define CTRL_4_PIN              PA_5  // A4
+#define CTRL_5_PIN              PA_6  // A5
+#define CTRL_6_PIN              PA_7  // A6
+#define CTRL_7_PIN              PA_2  // A7
+// virtual com port collides with control 7 (used for panel meter enable)
+// PA2 = TX from MCU
+// PA15 = RX to MCU
+#ifdef DEBUG
+Serial pc(USBTX, USBRX);
+#endif 
 
 SPI spi(DATA_PIN, MISO_UNUSED_PIN, CLK_PIN);
 PwmOut taillight(TAILLIGHT_EN_PIN);
@@ -51,13 +61,17 @@ DigitalIn ctrl3(CTRL_3_PIN, PullUp);
 DigitalIn ctrl4(CTRL_4_PIN, PullUp);
 DigitalIn ctrl5(CTRL_5_PIN, PullUp);
 DigitalIn ctrl6(CTRL_6_PIN, PullUp);
+#ifndef DEBUG
 DigitalIn ctrl7(CTRL_7_PIN, PullUp);
+#endif
 
+InterruptIn spd(SPEED_IN_PIN, PullUp);
 
-int time_since_wheeltick_ms = TEST_TIME_SINCE_WHEELTICK_MS;
+float time_since_wheeltick = TEST_TIME_SINCE_WHEELTICK_US;
 
 Ticker tick_250us;
 Ticker tick_100ms;
+Timer t;
 
 int count_250us = 0;
 int count_100ms = 0;
@@ -68,6 +82,7 @@ bool colors_active = false;
 bool taillight_active = false;
 bool floods_active = false;
 bool wig_wag_active = false;
+bool patrol_mode = true;
 
 // Not HTML hex; APA102 uses [B,G,R]
 int color_buffer[] = {0x2a034d,0x27054f,0x250851,0x220b53,0x200e55,0x1d1157,
@@ -81,6 +96,18 @@ int color_buffer[] = {0x2a034d,0x27054f,0x250851,0x220b53,0x200e55,0x1d1157,
                       0x0e2263,0x111f61,0x131c5f,0x16195d,0x18175b,0x1b1459,
                       0x1d1157,0x200e55,0x220b53,0x250851,0x27054f,0x2a034d                    
                     };
+
+int patrol_color_buffer[] = {0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,
+                            0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,
+                            0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,
+                            0xff0000,0xff0000,0x0000ff,0x0000ff,0x0000ff,0x0000ff,
+                            0x0000ff,0x0000ff,0x0000ff,0x0000ff,0x0000ff,0x0000ff,
+                            0x0000ff,0x0000ff,0x0000ff,0x0000ff,0x0000ff,0x0000ff,
+                            0x0000ff,0x0000ff,0x0000ff,0x0000ff,0xff0000,0xff0000,
+                            0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,
+                            0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,
+                            0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,0xff0000
+                            };
 
 void apa102_draw() {
     int i; 
@@ -133,14 +160,7 @@ void color_advance() {
     apa102_draw();
 }
 
-void callback_250us() {
-    // speed in meters per second works out nicely since mm / ms = m/s
-    speed_mps = (WHEEL_CIRC_MM / NUM_WHEEL_MAGNETS) / time_since_wheeltick_ms;
-    
-    count_250us++;
-}
-
-void callback_100ms() {
+void service_ctrl_panel() {
     bool start_wig_wag = false;
 
     // taillight brightness proportional to speed, saturate at ~15 mph.
@@ -151,17 +171,17 @@ void callback_100ms() {
     }
 
     // service control panel
-    // 1: Color Lights
+    // 1: Charge Enable
     if (!ctrl1.read()) {
+        chg_en.write(1);
+    } else {
+        chg_en.write(0);
+    }
+    // 2: colors_active
+    if (!ctrl2.read()) {
         colors_active = true;
     } else {
         colors_active = false;
-    }
-    // 2: Taillight
-    if (!ctrl2.read()) {
-        taillight_active = true;
-    } else {
-        taillight_active = false;
     }
     // 3: Floods
     if (!ctrl3.read()) {
@@ -179,18 +199,26 @@ void callback_100ms() {
     } else {
         wig_wag_active = false;
     }
-    // 5: Charge Enable
-    if (!ctrl5) {
-        chg_en.write(1);
+    // 5: Taillight
+    if (!ctrl5.read()) {  
+        taillight_active = true;
     } else {
-        chg_en.write(0);
+        taillight_active = false;
     }
-    // 6: Panel Meter Enable
-    if (!ctrl6) {
+    // 6: Patrol mode
+    if (!ctrl6.read()) {
+        patrol_mode = true;
+    } else {
+        patrol_mode = false;
+    }
+    // 7: Panel Meter Enable
+    #ifndef DEBUG
+    if (!ctrl7.read()) {
         meter_en.write(1);
     } else {
         meter_en.write(0);
     }
+    #endif
 
     // Wig-Wag overrides floods 
     if (wig_wag_active) {
@@ -207,7 +235,32 @@ void callback_100ms() {
             flood_r.write(0);
         }
     }
+}
 
+void callback_spd_pin() {
+    // disable IRQ till we're out of here
+    spd.disable_irq();
+
+    time_since_wheeltick = t.read_us();
+    // debounce the magnetic switch by discarding reads that are too close together to be real
+    if (time_since_wheeltick < MIN_TIME_BETWEEN_TICKS_US) {
+        spd.enable_irq();
+        return;
+    }
+
+    // speed in meters per second works out nicely since mm / ms = m/s
+    speed_mps = (WHEEL_CIRC_MM / NUM_WHEEL_MAGNETS) / (time_since_wheeltick / 1000.0);
+    t.reset();
+
+    spd.enable_irq();
+}
+
+void callback_250us() {
+    
+    count_250us++;
+}
+
+void callback_100ms() {
     count_100ms++;
 }
 
@@ -230,13 +283,25 @@ int main()
     taillight.period(1.0/PWM_RATE_HZ);
     taillight.write(0);
 
-    // draw out the starting frame on the color tape 
-    apa102_draw();
+    // start with color LEDs off 
+    color_clear();
+
+    // start the speed counter timer
+    t.start();
+    //attach the speed counter callback
+    spd.fall(&callback_spd_pin);
 
     tick_250us.attach_us(&callback_250us, 250);
     tick_100ms.attach(&callback_100ms, 0.1);
 
+    #ifdef DEBUG
+    pc.printf("Ready, min time between ticks is %0.2f\r\n", MIN_TIME_BETWEEN_TICKS_US);
+    #endif 
+
     while (true) {
+        // read the controls and update taillight brightness
+        service_ctrl_panel();
+
         // the 250us counter drives the advance rate of the pixels
         if (count_250us >= (4000.0 * (1.0/PIXELS_PER_METER) / speed_mps)) {
             if (colors_active) {
@@ -248,12 +313,14 @@ int main()
         }
         
         // the 100ms counter drives the blink rate of the wigwag
-        // the taillight brightness and control states are also served in the 100ms callback.
         if (count_100ms / 10.0 >= WIG_WAG_RATE_S) {
             if (wig_wag_active) {
                 flood_l.write(1 - flood_l.read());
                 flood_r.write(1 - flood_r.read());
             } 
+            #ifdef DEBUG
+            pc.printf("t = %0.2f, speed = %0.2f m/s\r\n", time_since_wheeltick, speed_mps);
+            #endif
             count_100ms = 0;
         }
     }
