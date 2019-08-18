@@ -19,6 +19,7 @@
 #define MAX_SPEED_MPS               18.0 // about 40 mph; used to debounce the mag switch
 #define TEST_TIME_SINCE_WHEELTICK_US     2000000 // 100 ms/tick * 4 ticks/rev * 1 rev/2.17m = 0.184 s/m = 5.4 m/s = 12mph
 #define WIG_WAG_RATE_S              1.0
+#define PATROL_COLOR_RATE_S         0.4
 #define MIN_TIME_BETWEEN_TICKS_US  (WHEEL_CIRC_MM * 1000)/ (NUM_WHEEL_MAGNETS * MAX_SPEED_MPS)
 
 /* Pin assignments */ 
@@ -49,8 +50,7 @@ SPI spi(DATA_PIN, MISO_UNUSED_PIN, CLK_PIN);
 DigitalOut taillight(TAILLIGHT_EN_PIN);
 // NFET Switches 2-4 have high threshold voltages and have external pullups
 // Use DigitalInOut instead of DigitalOut so we can configure Open Drain
-DigitalInOut flood_l(FLOOD_L_EN_PIN);
-DigitalInOut flood_r(FLOOD_R_EN_PIN);
+DigitalOut floods(FLOOD_R_EN_PIN);
 DigitalInOut meter_en(METER_EN_PIN);
 DigitalOut chg_en(CHG_EN_PIN, 0);
 
@@ -73,15 +73,16 @@ Ticker tick_250us;
 Ticker tick_100ms;
 Timer t;
 
-int count_250us = 0;
-int count_100ms = 0;
+int count_250us_colors = 0;
+int count_100ms_patrol = 0;
+int count_100ms_wigwag = 0;
 
 float speed_mps = 0;
 
 bool colors_active = false;
 bool floods_active = false;
 bool wig_wag_active = false;
-bool patrol_mode = true;
+bool patrol_mode_active = false;
 
 // Not HTML hex; APA102 uses [B,G,R]
 int color_buffer[] = {0x2a034d,0x27054f,0x250851,0x220b53,0x200e55,0x1d1157,
@@ -108,7 +109,7 @@ int patrol_color_buffer[] = {0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,0xff00
                             0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,0xff0000
                             };
 
-void apa102_draw() {
+void color_draw() {
     int i; 
 
     // start of frame
@@ -126,6 +127,52 @@ void apa102_draw() {
     for (i = 0; i < 4; i++) {
         spi.write(1);
     }
+}
+
+void color_advance() {
+    int temp = color_buffer[0];
+    for (int x = 0; x < (APA102_COUNT - 1); x++) {
+        color_buffer[x] = color_buffer[x + 1];
+        color_buffer[APA102_COUNT - 1] = temp;
+    }
+
+    // write out the current buffer
+    color_draw();
+}
+
+void patrol_draw() {
+    int i; 
+
+    // start of frame
+    for (i = 0; i < 4; i++) {
+        spi.write(0);
+    }
+    // LED buffer
+    for (i = 0; i < APA102_COUNT; i++) {
+        spi.write((7<<5) | APA102_LEVEL);
+        spi.write(patrol_color_buffer[i] & 0xff); // B
+        spi.write((patrol_color_buffer[i] >> 8) & 0xff); // G
+        spi.write((patrol_color_buffer[i] >> 16) & 0xff); // R
+    }
+    // end of frame
+    for (i = 0; i < 4; i++) {
+        spi.write(1);
+    }
+}
+
+void patrol_color_advance() {
+    for (int x = 0; x < (APA102_COUNT - 1); x++) {
+        if (patrol_color_buffer[x] == 0xff0000) {
+            // swap red to blue
+            patrol_color_buffer[x] = 0x0000ff;
+        } else {
+            // swap anything but red to red
+            patrol_color_buffer[x] = 0xff0000;
+        }
+    }
+
+    // write out the current buffer
+    patrol_draw();
 }
 
 void color_clear() {
@@ -148,17 +195,6 @@ void color_clear() {
     }
 }
 
-void color_advance() {
-    int temp = color_buffer[0];
-    for (int x = 0; x < (APA102_COUNT - 1); x++) {
-        color_buffer[x] = color_buffer[x + 1];
-        color_buffer[APA102_COUNT - 1] = temp;
-    }
-
-    // write out the current buffer
-    apa102_draw();
-}
-
 void service_ctrl_panel() {
     bool start_wig_wag = false;
 
@@ -175,22 +211,21 @@ void service_ctrl_panel() {
     } else {
         colors_active = false;
     }
-    // 3: Floods
-    if (!ctrl3.read()) {
+
+    // 3: Wig Wag (disabled until power board can be corrected)
+    // if (!ctrl3.read()) {
+    //     wig_wag_active = true;
+    // } else {
+    //     wig_wag_active = false;
+    // }
+
+    // 4: Floods
+    if (!ctrl4.read()) {
         floods_active = true; 
     } else {
         floods_active = false;
     } 
-    // 4: Wig Wag
-    if (!ctrl4.read()) {
-        if (!wig_wag_active) {
-            // wig wag just started
-            start_wig_wag = true;
-        }
-        wig_wag_active = true;
-    } else {
-        wig_wag_active = false;
-    }
+
     // 5: Taillight
     if (!ctrl5.read()) {  
         taillight.write(1);
@@ -199,9 +234,9 @@ void service_ctrl_panel() {
     }
     // 6: Patrol mode
     if (!ctrl6.read()) {
-        patrol_mode = true;
+        patrol_mode_active = true;
     } else {
-        patrol_mode = false;
+        patrol_mode_active = false;
     }
     // 7: Panel Meter Enable
     #ifndef DEBUG
@@ -212,21 +247,28 @@ void service_ctrl_panel() {
     }
     #endif
 
-    // Wig-Wag overrides floods 
-    if (wig_wag_active) {
-        if (start_wig_wag) {
-            flood_l.write(1);
-            flood_r.write(0);
-        }
-    } else {
-        if (floods_active) {
-            flood_l.write(1);
-            flood_r.write(1);
-        } else {
-            flood_l.write(0);
-            flood_r.write(0);
-        }
+    // Patrol mode overrides normal color mode
+    if (patrol_mode_active) {
+        colors_active = false;
     }
+
+    // Wig-wag overrides floods
+    // if (wig_wag_active) {
+    //     if (start_wig_wag) {
+    //         flood_l.write(1);
+    //         flood_r.write(0);
+    //     }
+    // } else {
+        if (floods_active) {
+            floods.write(1);
+            // flood_l.write(1);
+            // flood_r.write(1);
+        } else {
+            floods.write(0);
+            // flood_l.write(0);
+            // flood_r.write(0);
+        }
+    // }
 }
 
 void callback_spd_pin() {
@@ -248,34 +290,36 @@ void callback_spd_pin() {
 }
 
 void callback_250us() {
-    
-    count_250us++;
+    count_250us_colors++;
 }
 
 void callback_100ms() {
-    count_100ms++;
+    count_100ms_patrol++;
+    count_100ms_wigwag++;
 }
 
-// main() runs in its own thread in the OS
 int main()
 {
     // configure DigitalInOut pins as open drain ASAP
-    flood_l.output();
-    flood_l.mode(OpenDrain);
-    flood_r.output();
-    flood_r.mode(OpenDrain);
     meter_en.output();
     meter_en.mode(OpenDrain);
-    flood_l.write(0);
-    flood_r.write(0);
+
+    // rest of digital outputs
+    floods.write(0);
     meter_en.write(0);
     taillight.write(0);
 
+    // initialize SPI for APA102 interface
     spi.frequency(SPI_RATE_HZ);
 
     // initialize the lights to on or off
-    if (colors_active) {
-        apa102_draw();
+    // patrol mode overrides normal color mode
+    // bools are mutually exclusive coming from the control panel reader
+    // but let's keep it tidy here anyway
+    if (patrol_mode_active) {
+        patrol_draw();
+    } else if (colors_active) {
+        color_draw();
     } else {
         color_clear();
     }
@@ -297,25 +341,36 @@ int main()
         service_ctrl_panel();
 
         // the 250us counter drives the advance rate of the pixels
-        if (count_250us >= (4000.0 * (1.0/PIXELS_PER_METER) / speed_mps)) {
+        // here we are counting on colors_active and patrol_mode_active to be mutually exclusive...
+        if (count_250us_colors >= (4000.0 * (1.0/PIXELS_PER_METER) / speed_mps)) {
             if (colors_active) {
                 color_advance();
-            } else {
+            } else if (!patrol_mode_active) {
+                // clean up after other modes since this one is the fastest;
+                // if nobody else is using the lights, clear them here
                 color_clear();
             }
-            count_250us = 0;
+            count_250us_colors = 0;
+        }
+
+        // this 100ms counter drives the color change rate in patrol mode 
+        if (count_100ms_patrol / 10.0 >= PATROL_COLOR_RATE_S) {
+            if (patrol_mode_active) {
+                patrol_color_advance();
+            } 
+            count_100ms_patrol = 0;
         }
         
-        // the 100ms counter drives the blink rate of the wigwag
-        if (count_100ms / 10.0 >= WIG_WAG_RATE_S) {
-            if (wig_wag_active) {
-                flood_l.write(1 - flood_l.read());
-                flood_r.write(1 - flood_r.read());
-            } 
+        // this 100ms counter drives the blink rate of the wigwag
+        if (count_100ms_wigwag / 10.0 >= WIG_WAG_RATE_S) {
+            // if (wig_wag_active) {
+            //     flood_l.write(1 - flood_l.read());
+            //     flood_r.write(1 - flood_r.read());
+            // } 
             #ifdef DEBUG
             pc.printf("t = %0.2f, speed = %0.2f m/s\r\n", time_since_wheeltick, speed_mps);
             #endif
-            count_100ms = 0;
+            count_100ms_wigwag = 0;
         }
     }
 }
