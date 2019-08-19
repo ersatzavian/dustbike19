@@ -5,7 +5,7 @@
 
 #include "mbed.h"
 
-//#define DEBUG
+//#define SERIALTEST
 
 #define UPDATE_PERIOD_MS            100 // (msec)
 #define APA102_COUNT                60
@@ -42,7 +42,7 @@
 // virtual com port collides with control 7 (used for panel meter enable)
 // PA2 = TX from MCU
 // PA15 = RX to MCU
-#ifdef DEBUG
+#ifdef SERIALTEST
 Serial pc(USBTX, USBRX);
 #endif 
 
@@ -61,7 +61,7 @@ DigitalIn ctrl3(CTRL_3_PIN, PullUp);
 DigitalIn ctrl4(CTRL_4_PIN, PullUp);
 DigitalIn ctrl5(CTRL_5_PIN, PullUp);
 DigitalIn ctrl6(CTRL_6_PIN, PullUp);
-#ifndef DEBUG
+#ifndef SERIALTEST
 DigitalIn ctrl7(CTRL_7_PIN, PullUp);
 #endif
 
@@ -84,17 +84,28 @@ bool floods_active = false;
 bool wig_wag_active = false;
 bool patrol_mode_active = false;
 
-// Not HTML hex; APA102 uses [B,G,R]
-int color_buffer[] = {0x2a034d,0x27054f,0x250851,0x220b53,0x200e55,0x1d1157,
-                      0x1b1459,0x18175b,0x16195d,0x131c5f,0x111f61,0x0e2263,
-                      0x0c2565,0x092867,0x072b69,0x082b69,0x092867,0x0c2565,
-                      0x0e2263,0x111f61,0x131c5f,0x16195d,0x18175b,0x1b1459,
-                      0x1d1157,0x200e55,0x220b53,0x250851,0x27054f,0x2a034d,
-                      0x2a034d,0x27054f,0x250851,0x220b53,0x200e55,0x1d1157,
-                      0x1b1459,0x18175b,0x16195d,0x131c5f,0x111f61,0x0e2263,
-                      0x0c2565,0x092867,0x072b69,0x082b69,0x092867,0x0c2565,
-                      0x0e2263,0x111f61,0x131c5f,0x16195d,0x18175b,0x1b1459,
-                      0x1d1157,0x200e55,0x220b53,0x250851,0x27054f,0x2a034d                    
+// int color_buffer[] = {0x2a034d,0x27054f,0x250851,0x220b53,0x200e55,0x1d1157,
+//                       0x1b1459,0x18175b,0x16195d,0x131c5f,0x111f61,0x0e2263,
+//                       0x0c2565,0x092867,0x072b69,0x082b69,0x092867,0x0c2565,
+//                       0x0e2263,0x111f61,0x131c5f,0x16195d,0x18175b,0x1b1459,
+//                       0x1d1157,0x200e55,0x220b53,0x250851,0x27054f,0x2a034d,
+//                       0x2a034d,0x27054f,0x250851,0x220b53,0x200e55,0x1d1157,
+//                       0x1b1459,0x18175b,0x16195d,0x131c5f,0x111f61,0x0e2263,
+//                       0x0c2565,0x092867,0x072b69,0x082b69,0x092867,0x0c2565,
+//                       0x0e2263,0x111f61,0x131c5f,0x16195d,0x18175b,0x1b1459,
+//                       0x1d1157,0x200e55,0x220b53,0x250851,0x27054f,0x2a034d                    
+//                     };
+
+int color_buffer[] = {0xff00ff,0x3c00ff,0xda00ff,0xc800ff,0xb600ff,0xa300ff,
+                      0x9100ff,0x7f00ff,0x6d00ff,0x5b00ff,0x4800ff,0x3600ff,
+                      0x2400ff,0x1200ff,0x0000ff,0x0000ff,0x1200ff,0x2400ff,
+                      0x3600ff,0x4800ff,0x5b00ff,0x6d00ff,0x7f00ff,0x9100ff,
+                      0xa300ff,0xb600ff,0xc800ff,0xda00ff,0x3c00ff,0xff00ff,
+                      0xff00ff,0x3c00ff,0xda00ff,0xc800ff,0xb600ff,0xa300ff,
+                      0x9100ff,0x7f00ff,0x6d00ff,0x5b00ff,0x4800ff,0x3600ff,
+                      0x2400ff,0x1200ff,0x0000ff,0x0000ff,0x1200ff,0x2400ff,
+                      0x3600ff,0x4800ff,0x5b00ff,0x6d00ff,0x7f00ff,0x9100ff,
+                      0xa300ff,0xb600ff,0xc800ff,0xda00ff,0x3c00ff,0xff00ff                    
                     };
 
 int patrol_color_buffer[] = {0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,
@@ -239,7 +250,7 @@ void service_ctrl_panel() {
         patrol_mode_active = false;
     }
     // 7: Panel Meter Enable
-    #ifndef DEBUG
+    #ifndef SERIALTEST
     if (!ctrl7.read()) {
         meter_en.write(1);
     } else {
@@ -301,12 +312,14 @@ void callback_100ms() {
 int main()
 {
     // configure DigitalInOut pins as open drain ASAP
+    #ifndef SERIALTEST 
     meter_en.output();
     meter_en.mode(OpenDrain);
+    meter_en.write(0);
+    #endif
 
     // rest of digital outputs
     floods.write(0);
-    meter_en.write(0);
     taillight.write(0);
 
     // initialize SPI for APA102 interface
