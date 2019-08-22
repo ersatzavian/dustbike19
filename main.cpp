@@ -8,7 +8,7 @@
 //#define SERIALTEST
 
 #define UPDATE_PERIOD_MS            100 // (msec)
-#define APA102_COUNT                60
+#define APA102_COUNT                64
 #define APA102_LEVEL                31 // brightness 0-31
 #define SPI_RATE_HZ                 500000  
 #define PWM_RATE_HZ                 500
@@ -96,16 +96,14 @@ bool patrol_mode_active = false;
 //                       0x1d1157,0x200e55,0x220b53,0x250851,0x27054f,0x2a034d                    
 //                     };
 
-int color_buffer[] = {0xff00ff,0x3c00ff,0xda00ff,0xc800ff,0xb600ff,0xa300ff,
-                      0x9100ff,0x7f00ff,0x6d00ff,0x5b00ff,0x4800ff,0x3600ff,
-                      0x2400ff,0x1200ff,0x0000ff,0x0000ff,0x1200ff,0x2400ff,
-                      0x3600ff,0x4800ff,0x5b00ff,0x6d00ff,0x7f00ff,0x9100ff,
-                      0xa300ff,0xb600ff,0xc800ff,0xda00ff,0x3c00ff,0xff00ff,
-                      0xff00ff,0x3c00ff,0xda00ff,0xc800ff,0xb600ff,0xa300ff,
-                      0x9100ff,0x7f00ff,0x6d00ff,0x5b00ff,0x4800ff,0x3600ff,
-                      0x2400ff,0x1200ff,0x0000ff,0x0000ff,0x1200ff,0x2400ff,
-                      0x3600ff,0x4800ff,0x5b00ff,0x6d00ff,0x7f00ff,0x9100ff,
-                      0xa300ff,0xb600ff,0xc800ff,0xda00ff,0x3c00ff,0xff00ff                    
+int color_buffer[] = {0x32000f,0x2e0020,0x2a0040,0x210064,0x150096,0x0800b4,0x0400c8,0x0000ff, // 8
+                      0x0000ff,0x0400c8,0x0800b4,0x150096,0x210064,0x2a0040,0x2e0020,0x32000f, // 16 (first 8 backwards)
+                      0x32000f,0x2e0020,0x2a0040,0x210064,0x150096,0x0800b4,0x0400c8,0x0000ff, // 8
+                      0x0000ff,0x0400c8,0x0800b4,0x150096,0x210064,0x2a0040,0x2e0020,0x32000f,
+                      0x32000f,0x2e0020,0x2a0040,0x210064,0x150096,0x0800b4,0x0400c8,0x0000ff, // 8
+                      0x0000ff,0x0400c8,0x0800b4,0x150096,0x210064,0x2a0040,0x2e0020,0x32000f,
+                      0x32000f,0x2e0020,0x2a0040,0x210064,0x150096,0x0800b4,0x0400c8,0x0000ff, // 8
+                      0x0000ff,0x0400c8,0x0800b4,0x150096,0x210064,0x2a0040,0x2e0020,0x32000f
                     };
 
 int patrol_color_buffer[] = {0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,0xff0000,
@@ -345,10 +343,6 @@ int main()
     tick_250us.attach_us(&callback_250us, 250);
     tick_100ms.attach(&callback_100ms, 0.1);
 
-    #ifdef DEBUG
-    pc.printf("Ready, min time between ticks is %0.2f\r\n", MIN_TIME_BETWEEN_TICKS_US);
-    #endif 
-
     while (true) {
         // read the controls and update taillight brightness
         service_ctrl_panel();
@@ -380,9 +374,7 @@ int main()
             //     flood_l.write(1 - flood_l.read());
             //     flood_r.write(1 - flood_r.read());
             // } 
-            #ifdef DEBUG
-            pc.printf("t = %0.2f, speed = %0.2f m/s\r\n", time_since_wheeltick, speed_mps);
-            #endif
+            
             count_100ms_wigwag = 0;
         }
     }
