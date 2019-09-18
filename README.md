@@ -118,6 +118,7 @@ Pin | Signal
 ![Control Panel](images/ctrl_panel.png)
 
 Operating in Color mode with floods on: [YouTube](https://youtu.be/-PT2Iv_JQ2k)
+
 Operating in Patrol mode with taillight on: [YouTube](https://youtu.be/xmnZ-JuauxY)
 
 ## Issues
