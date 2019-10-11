@@ -21,6 +21,11 @@ NFETs (Used for Floods, Taillight, Panel voltmeter) | ST Micro | STP40NF03L | 3 
 SSRs (Used to tie charger ground to system ground) | Toshiba Semiconductor | TLP3544(F) | 1 | [Digi-Key](https://www.digikey.com/product-detail/en/TLP3544(F)/TLP3544(F)-ND/3056609/?itemSeq=299990184)
 Panel Voltmeter | "DROK" hahaha | "DC 2.7-30V Voltage Tester Meter 5V 9V 12V 24V" | 1 | [Amazon](https://www.amazon.com/DROK-2-7-30V-Digital-Voltmeter-Panel/dp/B07QWKLCX7/ref=sr_1_1_sspa?keywords=panel+voltmeter&qid=1565025037&s=gateway&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFJQkEwTldSMjdSTTEmZW5jcnlwdGVkSWQ9QTA3NTEyMDMzTEZVUEc2Q0hSVThKJmVuY3J5cHRlZEFkSWQ9QTA4MTc5NzMyTk5FRkNVVkMzREI2JndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==)
 
+## Component Prep
+
+### Nucleo Board
+
+* SB9 is populated from the factory with a 0 Ohm jumper, which allows the ST-Link target to control the nRST line on the controller. I cleared this so that the unpowered ST-Link wouldn't be hanging on the nRST line. This may have been unnecessary. 
 
 ## Important Pinouts I Probably Shouldn't Forget
 
@@ -44,6 +49,7 @@ Pin | Color | Signal
 ### Floods
 
 Pin | Color | Signal
+----|-------|-------
 1 | Orange | 12V
 2 | Orange/White | 12V
 3 | Green/White | 12V
