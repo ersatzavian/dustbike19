@@ -1,0 +1,10 @@
+Board Information Report
+Filename     : C:\Users\TomByrne\dustbike19\core_hardware\Dustbike_Core\Dustbike_Core.PcbDoc
+Date         : 3/23/2022
+Time         : 11:38:34 AM
+Time Elapsed : 00:00:00
+
+General
+    Board Size, 79.756mmx109.982mm
+    Components on board, 41
+count : 2
