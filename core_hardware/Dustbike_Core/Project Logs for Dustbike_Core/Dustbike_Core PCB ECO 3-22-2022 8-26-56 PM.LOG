@@ -1,0 +1,32 @@
+Added Component: Designator=U1(SOT95P280X120-5N_R1224N102M)
+Add component (AddParameter): Name = "Clock Sync"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Control Features"; Value = "Enable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Duty Cycle (Max)"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Frequency -  Switching"; Value = "180KhZ"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Function"; Value = "Step-Down"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer 1"; Value = "Nisshinbo Micro Devices Inc."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number 1"; Value = "R1224N102M-TR-FE"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Type"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Outputs"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature"; Value = "-40°C ~ 85°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Output Configuration"; Value = "Postive"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Output Phases"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Output Type"; Value = "Transistor Driver"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package / Case"; Value = "SC-74A, SOT-753"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Serial Interfaces"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Device Package"; Value = "SOT-23-5"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Link 1"; Value = "https://www.digikey.com/en/products/detail/nisshinbo-micro-devices-inc/R1224N102M-TR-FE/10244897?utm_medium=buyNow&utm_source=FindChips"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "2129-R1224N102M-TR-FECT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Synchronous Rectifier"; Value = "No"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Topology"; Value = "Buck"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TPN"; Value = "ICS-DSC-0002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage - Supply"; Value = "2.3v ~ 18.5v"; VariantName = "[No Variations]"
+Add Pin To Net: Unknown Pin: Pin D1-A
+Add Pin To Net: Unknown Pin: Pin D1-K
+Added Pin To Net: NetName=NetR1_1 Pin=U1-1
+Added Pin To Net: NetName=GND Pin=U1-2
+Added Pin To Net: NetName=NetR4_1 Pin=U1-3
+Added Pin To Net: NetName=NetR3_1 Pin=U1-4
+Added Pin To Net: NetName=NetR2_1 Pin=U1-5
+Added Member To Class: ClassName=BUCK Member=Component U1 R1224N102M

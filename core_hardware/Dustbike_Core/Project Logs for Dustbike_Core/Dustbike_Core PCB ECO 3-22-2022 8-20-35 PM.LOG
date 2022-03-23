@@ -1,0 +1,134 @@
+Added Component: Designator=Q2_LSS3(DPAK228P991X238-3N_NTD4815NHT4G)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.onsemi.com/pdf/datasheet/ntd4815nh-d.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Supplier Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.digikey.com/en/products/detail/onsemi/NTD4815NHT4G/1792971"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current - Max Continuous"; Value = "6.9A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Drain to Source Voltage (Vdss)"; Value = "30V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Drive Voltage (Max Rds On, Min Rds On)"; Value = "4.5V, 11.5V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Gate Charge (Qg) (Max) @ Vgs"; Value = "6.8 nC @ 4.5 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Gate Charge (Qg) @ Vgs"; Value = "6.8 nC @ 4.5 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "onsemi"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "NTD4815NHT4G"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature"; Value = "-55°C ~ 175°C (TJ)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package / Case"; Value = "TO-252-3, DPak (2 Leads + Tab), SC-63"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rds On (Max) @ Id, Vgs"; Value = "15mOhm @ 30A, 10V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1 Part Number"; Value = "NTD4815NHT4GOSCT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TPN"; Value = "NMOS-0002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "NFET"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vgs (Max)"; Value = "20V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vgs(th) (Max) @ Id"; Value = "2.5V @ 250µA"; VariantName = "[No Variations]"
+Added Component: Designator=Q2_LSS11(DPAK228P991X238-3N_NTD4815NHT4G)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.onsemi.com/pdf/datasheet/ntd4815nh-d.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Supplier Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.digikey.com/en/products/detail/onsemi/NTD4815NHT4G/1792971"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current - Max Continuous"; Value = "6.9A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Drain to Source Voltage (Vdss)"; Value = "30V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Drive Voltage (Max Rds On, Min Rds On)"; Value = "4.5V, 11.5V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Gate Charge (Qg) (Max) @ Vgs"; Value = "6.8 nC @ 4.5 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Gate Charge (Qg) @ Vgs"; Value = "6.8 nC @ 4.5 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "onsemi"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "NTD4815NHT4G"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature"; Value = "-55°C ~ 175°C (TJ)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package / Case"; Value = "TO-252-3, DPak (2 Leads + Tab), SC-63"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rds On (Max) @ Id, Vgs"; Value = "15mOhm @ 30A, 10V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1 Part Number"; Value = "NTD4815NHT4GOSCT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TPN"; Value = "NMOS-0002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "NFET"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vgs (Max)"; Value = "20V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vgs(th) (Max) @ Id"; Value = "2.5V @ 250µA"; VariantName = "[No Variations]"
+Added Component: Designator=Q2_LSS12(DPAK228P991X238-3N_NTD4815NHT4G)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.onsemi.com/pdf/datasheet/ntd4815nh-d.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Supplier Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.digikey.com/en/products/detail/onsemi/NTD4815NHT4G/1792971"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current - Max Continuous"; Value = "6.9A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Drain to Source Voltage (Vdss)"; Value = "30V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Drive Voltage (Max Rds On, Min Rds On)"; Value = "4.5V, 11.5V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Gate Charge (Qg) (Max) @ Vgs"; Value = "6.8 nC @ 4.5 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Gate Charge (Qg) @ Vgs"; Value = "6.8 nC @ 4.5 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "onsemi"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "NTD4815NHT4G"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature"; Value = "-55°C ~ 175°C (TJ)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package / Case"; Value = "TO-252-3, DPak (2 Leads + Tab), SC-63"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rds On (Max) @ Id, Vgs"; Value = "15mOhm @ 30A, 10V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1 Part Number"; Value = "NTD4815NHT4GOSCT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TPN"; Value = "NMOS-0002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "NFET"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vgs (Max)"; Value = "20V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vgs(th) (Max) @ Id"; Value = "2.5V @ 250µA"; VariantName = "[No Variations]"
+Added Component: Designator=Q2_LSS21(DPAK228P991X238-3N_NTD4815NHT4G)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.onsemi.com/pdf/datasheet/ntd4815nh-d.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Supplier Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.digikey.com/en/products/detail/onsemi/NTD4815NHT4G/1792971"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current - Max Continuous"; Value = "6.9A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Drain to Source Voltage (Vdss)"; Value = "30V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Drive Voltage (Max Rds On, Min Rds On)"; Value = "4.5V, 11.5V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Gate Charge (Qg) (Max) @ Vgs"; Value = "6.8 nC @ 4.5 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Gate Charge (Qg) @ Vgs"; Value = "6.8 nC @ 4.5 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "onsemi"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "NTD4815NHT4G"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature"; Value = "-55°C ~ 175°C (TJ)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package / Case"; Value = "TO-252-3, DPak (2 Leads + Tab), SC-63"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rds On (Max) @ Id, Vgs"; Value = "15mOhm @ 30A, 10V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1 Part Number"; Value = "NTD4815NHT4GOSCT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TPN"; Value = "NMOS-0002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "NFET"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vgs (Max)"; Value = "20V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vgs(th) (Max) @ Id"; Value = "2.5V @ 250µA"; VariantName = "[No Variations]"
+Added Component: Designator=Q2_LSS22(DPAK228P991X238-3N_NTD4815NHT4G)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.onsemi.com/pdf/datasheet/ntd4815nh-d.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Supplier Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.digikey.com/en/products/detail/onsemi/NTD4815NHT4G/1792971"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current - Max Continuous"; Value = "6.9A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Drain to Source Voltage (Vdss)"; Value = "30V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Drive Voltage (Max Rds On, Min Rds On)"; Value = "4.5V, 11.5V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Gate Charge (Qg) (Max) @ Vgs"; Value = "6.8 nC @ 4.5 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Gate Charge (Qg) @ Vgs"; Value = "6.8 nC @ 4.5 V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "onsemi"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number"; Value = "NTD4815NHT4G"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature"; Value = "-55°C ~ 175°C (TJ)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package / Case"; Value = "TO-252-3, DPak (2 Leads + Tab), SC-63"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rds On (Max) @ Id, Vgs"; Value = "15mOhm @ 30A, 10V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1 Part Number"; Value = "NTD4815NHT4GOSCT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TPN"; Value = "NMOS-0002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "NFET"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vgs (Max)"; Value = "20V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vgs(th) (Max) @ Id"; Value = "2.5V @ 250µA"; VariantName = "[No Variations]"
+Add Component: Footprint Not Found SOT95P280X120-5N_R1224N102M
+Add Pin To Net: Unknown Pin: Pin D1-A
+Add Pin To Net: Unknown Pin: Pin D1-K
+Added Pin To Net: NetName=LSS3_R_FLOOD Pin=Q2_LSS3-D
+Added Pin To Net: NetName=FLOOD_R_EN Pin=Q2_LSS3-G
+Added Pin To Net: NetName=GND Pin=Q2_LSS3-S
+Added Pin To Net: NetName=LSS4_SPARE Pin=Q2_LSS11-D
+Added Pin To Net: NetName=SPARE_PA_12 Pin=Q2_LSS11-G
+Added Pin To Net: NetName=GND Pin=Q2_LSS11-S
+Added Pin To Net: NetName=LSS1_TAIL Pin=Q2_LSS12-D
+Added Pin To Net: NetName=TAILLIGHT_EN Pin=Q2_LSS12-G
+Added Pin To Net: NetName=GND Pin=Q2_LSS12-S
+Added Pin To Net: NetName=LSS5_SPARE Pin=Q2_LSS21-D
+Added Pin To Net: NetName=SPARE_PA_11 Pin=Q2_LSS21-G
+Added Pin To Net: NetName=GND Pin=Q2_LSS21-S
+Added Pin To Net: NetName=LSS2_L_FLOOD Pin=Q2_LSS22-D
+Added Pin To Net: NetName=FLOOD_L_EN Pin=Q2_LSS22-G
+Added Pin To Net: NetName=GND Pin=Q2_LSS22-S
+Add Pin To Net: Unknown Pin: Pin U1-1
+Add Pin To Net: Unknown Pin: Pin U1-2
+Add Pin To Net: Unknown Pin: Pin U1-3
+Add Pin To Net: Unknown Pin: Pin U1-4
+Add Pin To Net: Unknown Pin: Pin U1-5
+Added Member To Class: ClassName=LSS3 Member=Component Q2_LSS3 (Q2) NFET_SOT323
+Added Member To Class: ClassName=LSS11 Member=Component Q2_LSS11 (Q2) NFET_SOT323
+Added Member To Class: ClassName=LSS12 Member=Component Q2_LSS12 (Q2) NFET_SOT323
+Added Member To Class: ClassName=LSS21 Member=Component Q2_LSS21 (Q2) NFET_SOT323
+Added Member To Class: ClassName=LSS22 Member=Component Q2_LSS22 (Q2) NFET_SOT323
+Add Class Member: Failed to add class member : Component U1 R1224N102M

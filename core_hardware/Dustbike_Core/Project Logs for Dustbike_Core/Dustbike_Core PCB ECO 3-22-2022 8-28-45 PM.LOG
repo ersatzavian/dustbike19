@@ -1,0 +1,20 @@
+Added Component: Designator=D1(DPAK254P1540X460-3N_STPS5045SG-TR)
+Add component (AddParameter): Name = "Current - Average Rectified (Io)"; Value = "50A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current - Reverse Leakage @ Vr"; Value = "360µA @ 45V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer 1"; Value = "STMicroelectronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number 1"; Value = "STPS5045SG-TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Type"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature - Junction"; Value = "200°C (Max)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package / Case"; Value = "TO-263-3, D²Pak (2 Leads + Tab), TO-263AB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Speed"; Value = "Fast Recovery =< 500ns, > 200mA (Io)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1 Link"; Value = "https://www.digikey.com/en/products/detail/stmicroelectronics/STPS5045SG-TR/3661704"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Device Packaging"; Value = "D²PAK"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "497-13279-1-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TPN"; Value = "DIO-GEN-0003"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage - DC Reverse (Vr) (Max)"; Value = "45V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage - Forward (Vf) (Max) @ If"; Value = "610mV @ 50A"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=D1-A
+Added Pin To Net: NetName=GND Pin=D1-A
+Added Pin To Net: NetName=NetD1_K Pin=D1-K
+Added Member To Class: ClassName=BUCK Member=Component D1 DIO-Schottky_STPS8L30B-TR

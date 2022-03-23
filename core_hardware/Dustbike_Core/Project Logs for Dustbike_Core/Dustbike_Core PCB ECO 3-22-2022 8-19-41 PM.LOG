@@ -1,0 +1,56 @@
+Added Component: Designator=L1(125CDMCCDS-100MC)
+Add component (AddParameter): Name = "Current - Saturation (Isat)"; Value = "14A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current Rating (Amps)"; Value = "9A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DC Resistance (DCR)"; Value = "22mO Max"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height - Seated (Max)"; Value = "0.197" (5.00MM)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Inductance"; Value = "10µH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Inductance Frequency - Test"; Value = "100 kHz"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer 1"; Value = "Sumida America Components Inc."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number 1"; Value = "125CDMCCDS-100MC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Type"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature"; Value = "-55°C ~ 125°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package / Case"; Value = "Nonstandard"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Shielding"; Value = "Shielded"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Size / Dimension"; Value = "0.530" L x 0.496" W (13.45mm x 12.60mm)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Device Package"; Value = "SMD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "308-2561-1-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "±20%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TPN"; Value = "IND-0001"; VariantName = "[No Variations]"
+Add Component: Footprint Not Found DPAK228P991X238-3N_NTD4815NHT4G
+Add Component: Footprint Not Found DPAK228P991X238-3N_NTD4815NHT4G
+Add Component: Footprint Not Found DPAK228P991X238-3N_NTD4815NHT4G
+Add Component: Footprint Not Found DPAK228P991X238-3N_NTD4815NHT4G
+Add Component: Footprint Not Found DPAK228P991X238-3N_NTD4815NHT4G
+Add Component: Footprint Not Found SOT95P280X120-5N_R1224N102M
+Add Pin To Net: Unknown Pin: Pin D1-A
+Add Pin To Net: Unknown Pin: Pin D1-K
+Added Pin To Net: NetName=NetD1_K Pin=L1-1
+Added Pin To Net: NetName=5V0 Pin=L1-2
+Add Pin To Net: Unknown Pin: Pin Q2_LSS3-D
+Add Pin To Net: Unknown Pin: Pin Q2_LSS3-G
+Add Pin To Net: Unknown Pin: Pin Q2_LSS3-S
+Add Pin To Net: Unknown Pin: Pin Q2_LSS11-D
+Add Pin To Net: Unknown Pin: Pin Q2_LSS11-G
+Add Pin To Net: Unknown Pin: Pin Q2_LSS11-S
+Add Pin To Net: Unknown Pin: Pin Q2_LSS12-D
+Add Pin To Net: Unknown Pin: Pin Q2_LSS12-G
+Add Pin To Net: Unknown Pin: Pin Q2_LSS12-S
+Add Pin To Net: Unknown Pin: Pin Q2_LSS21-D
+Add Pin To Net: Unknown Pin: Pin Q2_LSS21-G
+Add Pin To Net: Unknown Pin: Pin Q2_LSS21-S
+Add Pin To Net: Unknown Pin: Pin Q2_LSS22-D
+Add Pin To Net: Unknown Pin: Pin Q2_LSS22-G
+Add Pin To Net: Unknown Pin: Pin Q2_LSS22-S
+Add Pin To Net: Unknown Pin: Pin U1-1
+Add Pin To Net: Unknown Pin: Pin U1-2
+Add Pin To Net: Unknown Pin: Pin U1-3
+Add Pin To Net: Unknown Pin: Pin U1-4
+Add Pin To Net: Unknown Pin: Pin U1-5
+Added Member To Class: ClassName=BUCK Member=Component L1 INDUCTOR
+Add Class Member: Failed to add class member : Component Q2_LSS3 (Q2) NFET_SOT323
+Add Class Member: Failed to add class member : Component Q2_LSS11 (Q2) NFET_SOT323
+Add Class Member: Failed to add class member : Component Q2_LSS12 (Q2) NFET_SOT323
+Add Class Member: Failed to add class member : Component Q2_LSS21 (Q2) NFET_SOT323
+Add Class Member: Failed to add class member : Component Q2_LSS22 (Q2) NFET_SOT323
+Add Class Member: Failed to add class member : Component U1 R1224N102M

@@ -1,0 +1,77 @@
+Add Component: Footprint Not Found WURTH_691311500103
+Add Component: Footprint Not Found WURTH_691311500104
+Add Component: Footprint Not Found WURTH_691311500108
+Add Component: Footprint Not Found WURTH_691311500104
+Add Component: Footprint Not Found WURTH_691311500108
+Add Component: Footprint Not Found 125CDMCCDS-100MC
+Add Component: Footprint Not Found DPAK228P991X238-3N_NTD4815NHT4G
+Add Component: Footprint Not Found DPAK228P991X238-3N_NTD4815NHT4G
+Add Component: Footprint Not Found DPAK228P991X238-3N_NTD4815NHT4G
+Add Component: Footprint Not Found DPAK228P991X238-3N_NTD4815NHT4G
+Add Component: Footprint Not Found DPAK228P991X238-3N_NTD4815NHT4G
+Add Component: Footprint Not Found SOT95P280X120-5N_R1224N102M
+Add Pin To Net: Unknown Pin: Pin D1-A
+Add Pin To Net: Unknown Pin: Pin D1-K
+Add Pin To Net: Unknown Pin: Pin J4-1
+Add Pin To Net: Unknown Pin: Pin J4-2
+Add Pin To Net: Unknown Pin: Pin J4-3
+Add Pin To Net: Unknown Pin: Pin J6-1
+Add Pin To Net: Unknown Pin: Pin J6-2
+Add Pin To Net: Unknown Pin: Pin J6-3
+Add Pin To Net: Unknown Pin: Pin J6-4
+Add Pin To Net: Unknown Pin: Pin J7-1
+Add Pin To Net: Unknown Pin: Pin J7-2
+Add Pin To Net: Unknown Pin: Pin J7-3
+Add Pin To Net: Unknown Pin: Pin J7-4
+Add Pin To Net: Unknown Pin: Pin J7-5
+Add Pin To Net: Unknown Pin: Pin J7-6
+Add Pin To Net: Unknown Pin: Pin J7-7
+Add Pin To Net: Unknown Pin: Pin J7-8
+Add Pin To Net: Unknown Pin: Pin J8-1
+Add Pin To Net: Unknown Pin: Pin J8-2
+Add Pin To Net: Unknown Pin: Pin J8-3
+Add Pin To Net: Unknown Pin: Pin J8-4
+Add Pin To Net: Unknown Pin: Pin J10-1
+Add Pin To Net: Unknown Pin: Pin J10-2
+Add Pin To Net: Unknown Pin: Pin J10-3
+Add Pin To Net: Unknown Pin: Pin J10-4
+Add Pin To Net: Unknown Pin: Pin J10-5
+Add Pin To Net: Unknown Pin: Pin J10-6
+Add Pin To Net: Unknown Pin: Pin J10-7
+Add Pin To Net: Unknown Pin: Pin J10-8
+Add Pin To Net: Unknown Pin: Pin L1-1
+Add Pin To Net: Unknown Pin: Pin L1-2
+Add Pin To Net: Unknown Pin: Pin Q2_LSS3-D
+Add Pin To Net: Unknown Pin: Pin Q2_LSS3-G
+Add Pin To Net: Unknown Pin: Pin Q2_LSS3-S
+Add Pin To Net: Unknown Pin: Pin Q2_LSS11-D
+Add Pin To Net: Unknown Pin: Pin Q2_LSS11-G
+Add Pin To Net: Unknown Pin: Pin Q2_LSS11-S
+Add Pin To Net: Unknown Pin: Pin Q2_LSS12-D
+Add Pin To Net: Unknown Pin: Pin Q2_LSS12-G
+Add Pin To Net: Unknown Pin: Pin Q2_LSS12-S
+Add Pin To Net: Unknown Pin: Pin Q2_LSS21-D
+Add Pin To Net: Unknown Pin: Pin Q2_LSS21-G
+Add Pin To Net: Unknown Pin: Pin Q2_LSS21-S
+Add Pin To Net: Unknown Pin: Pin Q2_LSS22-D
+Add Pin To Net: Unknown Pin: Pin Q2_LSS22-G
+Add Pin To Net: Unknown Pin: Pin Q2_LSS22-S
+Add Pin To Net: Unknown Pin: Pin U1-1
+Add Pin To Net: Unknown Pin: Pin U1-2
+Add Pin To Net: Unknown Pin: Pin U1-3
+Add Pin To Net: Unknown Pin: Pin U1-4
+Add Pin To Net: Unknown Pin: Pin U1-5
+Add Class Member: Failed to add class member : Component J4 HDR_3POS
+Add Class Member: Failed to add class member : Component J6 HDR_4POS
+Add Class Member: Failed to add class member : Component J7 HDR_8POS
+Add Class Member: Failed to add class member : Component J8 HDR_4POS
+Add Class Member: Failed to add class member : Component J10 HDR_8POS
+Add Class Member: Failed to add class member : Component L1 INDUCTOR
+Add Class Member: Failed to add class member : Component Q2_LSS3 (Q2) NFET_SOT323
+Add Class Member: Failed to add class member : Component Q2_LSS11 (Q2) NFET_SOT323
+Add Class Member: Failed to add class member : Component Q2_LSS12 (Q2) NFET_SOT323
+Add Class Member: Failed to add class member : Component Q2_LSS21 (Q2) NFET_SOT323
+Add Class Member: Failed to add class member : Component Q2_LSS22 (Q2) NFET_SOT323
+Add Class Member: Failed to add class member : Component U1 R1224N102M
+Added Room: Name=HSS1
+Added Room: Name=HSS2
