@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Dustbike_Core.PrjPcb]
+   Generated File[Dustbike_Core.TXT]
+   Generated File[Dustbike_Core.LDP]
+   Generated File[Dustbike_Core.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 11:07:46 AM On 3/23/2022
