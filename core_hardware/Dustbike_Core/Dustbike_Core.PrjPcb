@@ -133,6 +133,10 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=GXSFJWRB
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for Dustbike_Core\Design Rule Check - Dustbike_Core.html
+DItemRevisionGUID=
+
 [Configuration1]
 Name=Sources
 ParameterCount=0

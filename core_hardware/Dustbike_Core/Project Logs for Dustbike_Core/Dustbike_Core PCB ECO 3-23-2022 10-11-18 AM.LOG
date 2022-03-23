@@ -1,0 +1,32 @@
+Added Component: Designator=J5(NANO_HEADER)
+Add component (AddParameter): Name = "Manufacturer 1"; Value = "STMicroelectronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number 1"; Value = "NUCLEO-L432KC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Link 1"; Value = "https://www.digikey.com/en/products/detail/NUCLEO-L432KC/497-16592-ND/6132763?itemSeq=297939740"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "497-16592-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "TPN"; Value = "MOD-0001"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=FLOOD_L_EN Pin=J5-1
+Added Pin To Net: NetName=FLOOD_L_EN Pin=J5-1
+Added Pin To Net: NetName=FLOOD_R_EN Pin=J5-2
+Added Pin To Net: NetName=GND Pin=J5-4
+Added Pin To Net: NetName=SPARE_PA_12 Pin=J5-5
+Added Pin To Net: NetName=VMETER_EN Pin=J5-6
+Added Pin To Net: NetName=SPARE_PB_7 Pin=J5-7
+Added Pin To Net: NetName=SPARE_PB_6 Pin=J5-8
+Added Pin To Net: NetName=CHARGE_EN Pin=J5-9
+Added Pin To Net: NetName=TAILLIGHT_EN Pin=J5-12
+Added Pin To Net: NetName=SPARE_PA_11 Pin=J5-13
+Added Pin To Net: NetName=COLOR_DATA Pin=J5-14
+Added Pin To Net: NetName=COLOR_MISO_NC Pin=J5-15
+Added Pin To Net: NetName=COLOR_CLK Pin=J5-16
+Added Pin To Net: NetName=SPEED_PULSE_IN Pin=J5-19
+Added Pin To Net: NetName=CTRL_IN_1 Pin=J5-20
+Added Pin To Net: NetName=CTRL_IN_2 Pin=J5-21
+Added Pin To Net: NetName=CTRL_IN_3 Pin=J5-22
+Added Pin To Net: NetName=CTRL_IN_4 Pin=J5-23
+Added Pin To Net: NetName=CTRL_IN_5 Pin=J5-24
+Added Pin To Net: NetName=CTRL_IN_6 Pin=J5-25
+Added Pin To Net: NetName=CTRL_IN_7 Pin=J5-26
+Added Pin To Net: NetName=GND Pin=J5-29
+Added Pin To Net: NetName=5V0 Pin=J5-30
+Added Member To Class: ClassName=Dustbike_Core_Top Member=Component J5 NUCLEO_NANO

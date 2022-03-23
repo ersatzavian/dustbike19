@@ -1,0 +1,72 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\TomByrne\dustbike19\core_hardware\Dustbike_Core\Dustbike_Core.PcbDoc
+Date     : 3/23/2022
+Time     : 11:01:42 AM
+
+Processing Rule : Clearance Constraint (Gap=15mil) (OnLayer('Mechanical 1')),(InPolygon)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=8mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=8mil) (Max=100mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=11.811mil) (Max=250mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=3mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=3mil) (IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=3mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Room LSS12 (Bounding Region = (4660mil, 3980mil, 4980mil, 4520mil) (InComponentClass('LSS12'))
+Rule Violations :0
+
+Processing Rule : Room LSS21 (Bounding Region = (4280mil, 2900mil, 4820mil, 3220mil) (InComponentClass('LSS21'))
+Rule Violations :0
+
+Processing Rule : Room HSS1 (Bounding Region = (4280mil, 3640mil, 4900mil, 3940mil) (InComponentClass('HSS1'))
+Rule Violations :0
+
+Processing Rule : Room LSS22 (Bounding Region = (5050.787mil, 3980mil, 5370.787mil, 4520mil) (InComponentClass('LSS22'))
+Rule Violations :0
+
+Processing Rule : Room LSS11 (Bounding Region = (4280mil, 2500mil, 4820mil, 2820mil) (InComponentClass('LSS11'))
+Rule Violations :0
+
+Processing Rule : Room HSS2 (Bounding Region = (4280mil, 3280mil, 4900mil, 3580mil) (InComponentClass('HSS2'))
+Rule Violations :0
+
+Processing Rule : Room LSS3 (Bounding Region = (5440mil, 3980mil, 5760mil, 4520mil) (InComponentClass('LSS3'))
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+
+Violations Detected : 0
+Waived Violations : 0
+Time Elapsed        : 00:00:01
