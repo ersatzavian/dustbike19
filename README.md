@@ -136,5 +136,5 @@ Motorcycle flood lights have three modes and cycle through them on each power cy
 Light pattern speed does not appear to match vehicle speed very well, if at all. | Whatever, it works. | Going to need some test fixturing or at least a test rider. |
 Light pattern speed does not update smoothly, especially at low speed. | Whatever, it works. | Add more magnets, or an encoder! |
 5V Supply gets quite hot, even at very low load. | Didn't break, doesn't matter. | Design a real board and replace reg. | 
-Internal harnessing is a nightmare. | Whatever, it works. | Design a real board. Harness from inside of sealed passthrough connectors straight to board - no terminal blocks. |
+Internal harnessing is a nightmare. | Whatever, it works. | Design a real board. Harness from inside of sealed passthrough connectors straight to board - no terminal blocks. | Yes, see [Dustbike Core](https://github.com/ersatzavian/dustbike19/tree/master/core_hardware/Dustbike_Core)
 Using same connector for 12V floods and 5V APA102 strings, as well as control panel and hall sensor. Swapping cables is more likely to be catastrophic than not. | Painted connectors and matching cables matching colors with some of Meb's nail polish. Still did it wrong once and had to replace stuff. | Use different connectors (something compatible with APA102 strings out of the box would be even nicer). | 
