@@ -122,6 +122,7 @@ Pin | Signal
 ![Box internals](images/box_build.jpg)
 ![Box outside](images/box_outside.png)
 ![Control Panel](images/ctrl_panel.png)
+![Schematic](images/dustbike_core_sch.png)
 
 Operating in Color mode with floods on: [YouTube](https://youtu.be/-PT2Iv_JQ2k)
 
