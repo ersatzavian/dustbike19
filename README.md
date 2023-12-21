@@ -119,7 +119,7 @@ Pin | Signal
 
 ## Images
 
-![Box internals](images/box_build.png)
+![Box internals](images/box_build.jpg)
 ![Box outside](images/box_outside.png)
 ![Control Panel](images/ctrl_panel.png)
 
